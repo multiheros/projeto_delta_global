@@ -2,4 +2,4 @@ deltaGlobal
 deltaGlobal.pub
 debugbar
 */logs/log-*
-*.env
+.env

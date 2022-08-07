@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/header.css">
-    <title>Atividade Backend</title>
 </head>
 
 <body>
@@ -23,10 +22,10 @@
                         <a class="nav-link" href="<?php echo site_url() ?>">Home <span class="sr-only">(Página atual)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('register') ?>">Cadastrar</a>
+                        <a class="nav-link" href="<?php echo site_url('cadastrar') ?>">Cadastrar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('users') ?>">Alunos</a>
+                        <a class="nav-link" href="<?php echo site_url('alunos') ?>">Alunos</a>
                     </li>
                 </ul>
             </div>

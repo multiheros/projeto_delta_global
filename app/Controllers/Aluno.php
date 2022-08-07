@@ -4,26 +4,34 @@ namespace App\Models;
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
+use App\Models\AlunoModel;
 
-class User extends BaseController
+class Aluno extends BaseController
 {
-    private $userModel;
+    private $alunoModel;
 
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        $this->alunoModel = new AlunoModel();
     }
 
-    public function getUsers()
+    /**
+     * Método responsável por montar a view do *lista de alunos*
+     * @return view contendo os dados dos alunos.
+     */
+    public function getAlunos()
     {
         return view('header')
-        . view('users', [
-            'users' => $this->userModel->findAll()
+        . view('alunos', [
+            'alunos' => $this->alunoModel->findAll()
         ]);
     }
 
-    public function registerUser()
+    /**
+     * Método responsável por montar a view *cadastro aluno*
+     * @return view e as informações referentes ao status do processo.
+     */
+    public function setAlunos()
     {
         if ($this->request->getPost()) {
             // Regra de validação da imagem
@@ -41,7 +49,7 @@ class User extends BaseController
             if (!$this->validate($validationRule)) {
                 $data = ['errors' => $this->validator->getErrors()];
 
-                return view('register_user', $data);
+                return view('header') . view('cadastrar_aluno', $data);
             }
 
             $img = $this->request->getFile('picture');
@@ -53,19 +61,19 @@ class User extends BaseController
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
             // Instancia os valores a serem salvos no banco de dados
-            $this->userModel->set('name', $this->request->getPost('name'));
-            $this->userModel->set('andress', $this->request->getPost('andress'));
-            $this->userModel->set('picture', $base64);
+            $this->alunoModel->set('name', $this->request->getPost('name'));
+            $this->alunoModel->set('andress', $this->request->getPost('andress'));
+            $this->alunoModel->set('picture', $base64);
 
             // Insere no banco de dados
-            if($this->userModel->insert()) {
-                return view('register_user', ['errors' => ['Tudo certo']]);
+            if($this->alunoModel->insert()) {
+                return view('header') . view('cadastrar_aluno', ['errors' => ['Aluno cadastrado com sucesso!']]);
             } else {
-                return view('register_user', ['errors' => ['Erro ao inserir']]);
+                return  view('header'). view('cadastrar_aluno', ['errors' => ['Erro ao cadastrar aluno']]);
             }
         }
 
         return view('header')
-        . view('register_user', ['errors' => []]);
+        . view('cadastrar_aluno', ['errors' => []]);
     }
 }

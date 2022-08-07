@@ -35,10 +35,13 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'home::index');
-$routes->get('register', 'User::registerUser');
-$routes->post('register', 'User::registerUser');
-$routes->get('users', 'User::getUsers');
+$routes->get('/', 'Home::index');
+// View de cadastro de aluno
+$routes->get('cadastrar', 'Aluno::setAlunos');
+// View de envio de formulário de cadastro de aluno
+$routes->post('cadastrar', 'Aluno::setAlunos');
+// View para listar os alunos cadastrados
+$routes->get('alunos', 'Aluno::getAlunos');
 
 /*
  * --------------------------------------------------------------------

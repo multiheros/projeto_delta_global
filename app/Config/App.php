@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://projetoDeltaGlobal.com.br/';
+    public $baseURL = 'http://44.208.143.27/';
 
     /**
      * --------------------------------------------------------------------------
